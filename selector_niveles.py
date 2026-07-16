@@ -3,6 +3,9 @@ import constantes
 from menu import NodoBoton, GrafoMenu
 from nivel_juego import NivelJuego
 from nivel_juego123 import NivelJuego
+from nivel4 import Nivel4
+from nivel5 import Nivel5
+from nivel6 import Nivel6
 # ============================================================
 # PARA AGREGAR TU NIVEL:
 # 1. Crea tu clase de nivel en tu propio archivo (ej: nivel4.py)
@@ -53,9 +56,20 @@ class SelectorNiveles:
                     self.ventana, self.recursos, numero=4,
                     enemigos_para_ganar=8, intervalo_spawn=1900,
                     max_enemigos=5, velocidad_enemigo=2.5)),
-            NodoNivel(4, fabrica_nivel=None),
-            NodoNivel(5, fabrica_nivel=None),
-            NodoNivel(6, fabrica_nivel=None),
+            NodoNivel(4, fabrica_nivel=lambda: Nivel4(
+                    self.ventana, self.recursos, numero=4,
+                    intervalo_spawn=1800, max_enemigos=4,
+                    velocidad_enemigo=1.6, corazones_para_ganar=6)),
+
+            NodoNivel(5, fabrica_nivel=lambda: Nivel5(
+                    self.ventana, self.recursos, numero=5,
+                    enemigos_para_ganar=10, intervalo_spawn=1500,
+                    max_enemigos=6, velocidad_enemigo=2.2)),
+
+            NodoNivel(6, fabrica_nivel=lambda: Nivel6(
+                    self.ventana, self.recursos, numero=6,
+                    intervalo_spawn=4000, max_enemigos=4,
+                    velocidad_enemigo=1.8, vida_jefe=400)),
 
             NodoNivel(7, fabrica_nivel=lambda: NivelJuego(
                 self.ventana, self.recursos, numero=7,
